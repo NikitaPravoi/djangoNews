@@ -2,5 +2,5 @@
 *.pyo
 __pycache__
 media/
-static/
+news/static/
 venv/

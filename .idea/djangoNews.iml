@@ -14,10 +14,15 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/media" />
+      <excludeFolder url="file://$MODULE_DIR$/news/static" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="djangoProject" />
+    <orderEntry type="library" name="swiper" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
