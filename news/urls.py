@@ -3,5 +3,5 @@ from . import views
 
 app_name = 'djangoNews'
 urlpatterns = [
-    path('', views.get_html, name='news'),
+    path('', views.get_week_cards, name='news'),
 ]

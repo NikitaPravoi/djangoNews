@@ -1,0 +1,15 @@
+{% extends "news/base.html" %}
+{% block content %}
+    {% for card in week_cards %}
+    <div class="card">
+        <div class="card-date">
+            <div class="date">
+                <span class="text-date">{{ card.date }}</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <span>{{ card.content }}</span>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
