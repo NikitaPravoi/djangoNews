@@ -10,12 +10,12 @@ class User(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=250)
     body = models.TextField()
+    participants = models.ManyToManyField(User)
     file = models.FileField(upload_to="media/", null=True, blank=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    event_date = models.DateField(default=timezone.now)
-    participants = models.ManyToManyField(User)
+    event_date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ['-publish']
