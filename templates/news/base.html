@@ -115,19 +115,34 @@
       </div>
     </div>
   </header>
-    {% for card in week_cards %}
-        <div class="card {% if card.is_current_day %}current-day{% endif %}">
-            <div class="card-date">
-                <div class="date">
-                    <span class="text-date">{{ card.date }}</span>
+    <div class="main">
+        <div>
+            {% for card in week_cards %}
+                <div class="card {% if card.is_current_day %}current-day{% endif %}">
+                    <div class="card-date">
+                        <div class="date">
+                            <span class="text-date">{{ card.date }}</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span>{{ card.content }}</span>
+                    </div>
                 </div>
+            {% endfor %}
+        </div>
+        {% for event in events %}
+        <div class="event">
+            <div class="event-title">
+                <h2 >{{ event.title }}</h2>
             </div>
-            <div class="card-content">
-                <span>{{ card.content }}</span>
+            <div class="event-text">
+                <span >{{ event.body }}</span>
+            </div>
+            <div class="event-date-published" >
+                Опубликовано: {{ event.publish }}
             </div>
         </div>
-    {% endfor %}
-    {% block content %}
-    {% endblock %}
+        {% endfor %}
+  </div>
 </body>
 </html>

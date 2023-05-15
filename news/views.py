@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import date, timedelta
+from .models import Event
 import calendar
 
 
@@ -22,7 +23,10 @@ def get_week_cards(request):
         }
         week_cards.append(card)
 
+    events = Event.objects.all()
+
     context = {
-        'week_cards': week_cards
+        'week_cards': week_cards,
+        'events': events,
     }
     return render(request, 'news/base.html', context)
