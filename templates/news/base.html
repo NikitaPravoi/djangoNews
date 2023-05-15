@@ -132,17 +132,19 @@
         </div>
         {% for event in events %}
         <div class="event">
-            <div class="event-title">
-                <h2 >{{ event.title }}</h2>
-            </div>
-            <div class="event-text">
-                <span >{{ event.body }}</span>
-            </div>
-            <div class="event-date-published" >
-                Опубликовано: {{ event.publish }}
+            <div class="event-content">
+                <div class="event-header">
+                    <h2>{{ event.title }}</h2>
+                    <div class="event-date-published">
+                        Опубликовано: {{ event.publish }}
+                    </div>
+                </div>
+                <div class="event-text">
+                    <span>{{ event.body }}</span>
+                </div>
             </div>
         </div>
         {% endfor %}
-  </div>
+    </div>
 </body>
 </html>
