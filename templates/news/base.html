@@ -27,6 +27,130 @@
           background-color: #ffffff;
           z-index: 9999;
       }
+      *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Arial', sans-serif;
+      }
+
+      body{
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #dedede;
+      }
+
+      .main{
+          width: 90%;
+          float: left;
+          margin-top: auto;
+      }
+
+      section{
+          position: relative;
+          display: flex;
+      }
+
+      .nw-header{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #ffffff;
+          z-index: 9999;
+      }
+
+      .day-card{
+          position: relative;
+          background: #fff;
+          border-radius: 20px;
+          margin: 20px 5px 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          width: 260px;
+          height: 150px;
+      }
+
+      .day-card::before{
+          content: "";
+          position: absolute;
+          height: 30%;
+          width: 100%;
+          background: #B5DCA4;
+          border-radius: 20px 20px 0 0;
+      }
+
+        .current-day::before {
+          content: "";
+          position: absolute;
+          height: 30%;
+          width: 100%;
+          background: #4DA958;
+          border-radius: 20px 20px 0 0;
+        }
+
+      .day-card .card-date{
+          display: flex;
+          align-items: center;
+          padding-top: 5%;
+          padding-left: 1rem;
+          position: relative;
+          z-index: 100;
+      }
+
+      .card-date .date{
+          font-weight: bold;
+      }
+
+      .day-card .card-content{
+          position: relative;
+          z-index: 100;
+      }
+
+      .day-card .card-text{
+          display: flex;
+          align-items: center;
+          padding: 12px;
+          position: relative;
+          z-index: 100;
+      }
+
+      .event{
+          position: relative;
+          background: #fff;
+          border-radius: 20px;
+          margin: 30px 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .event .event-content{
+          padding: 12px;
+          position: relative;
+          z-index: 100;
+      }
+
+      .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+      }
+
+      .event-date-published{
+            color: #dcdcdc
+      }
+
+      .wrapper-sroll {
+          display: flex;
+          overflow-x: auto;
+          min-width: 100%;
+          min-height: 200px;
+          scroll-behavior: smooth;
+      }
+
+      .wrapper-sroll::-webkit-scrollbar {
+          display: none;
+      }
     </style>
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href={% static "css/news.css" %}>
