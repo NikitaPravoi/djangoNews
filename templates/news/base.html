@@ -8,7 +8,6 @@
 	<!-- Favicons -->
 	<meta name="theme-color" content="#7952b3">
     <link rel="icon" href="{% static 'braces-asterisk.png' %}" type="image/x-icon">
-
     <style>
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -116,20 +115,22 @@
     </div>
   </header>
     <div class="main">
-        <div>
-            {% for card in week_cards %}
-                <div class="card {% if card.is_current_day %}current-day{% endif %}">
-                    <div class="card-date">
-                        <div class="date">
-                            <span class="text-date">{{ card.date }}</span>
+        <section class="wrapper-sroll" id="statistic-table">
+                {% for card in week_cards %}
+                    <div class="day-card {% if card.is_current_day %}current-day{% endif %}">
+                        <div class="card-content" >
+                            <div class="card-date">
+                                <div class="date">
+                                    <span class="text-date">{{ card.date }}</span>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <span>{{ card.content }}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <span>{{ card.content }}</span>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+        </section>
         {% for event in events %}
         <div class="event">
             <div class="event-content">
@@ -147,4 +148,25 @@
         {% endfor %}
     </div>
 </body>
+<script>
+    (function() {
+
+        function scrollHorizontally(e) {
+            e = window.event || e;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            document.getElementById('statistic-table').scrollLeft -= (delta*300); // Multiplied by 10
+            e.preventDefault();
+        }
+        if (document.getElementById('statistic-table').addEventListener) {
+            // IE9, Chrome, Safari, Opera
+            document.getElementById('statistic-table').addEventListener("mousewheel", scrollHorizontally, false);
+            // Firefox
+            document.getElementById('statistic-table').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+        } else {
+            // IE 6/7/8
+            document.getElementById('statistic-table').attachEvent("onmousewheel", scrollHorizontally);
+        }
+
+        })();
+  </script>
 </html>
