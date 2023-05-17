@@ -93,8 +93,7 @@
       .day-card .card-date{
           display: flex;
           align-items: center;
-          padding-top: 5%;
-          padding-left: 1rem;
+          padding: 15px 20px 20px 20px;
           position: relative;
           z-index: 100;
       }
@@ -111,9 +110,9 @@
       .day-card .card-text{
           display: flex;
           align-items: center;
-          padding: 12px;
           position: relative;
           z-index: 100;
+          padding: 15px 20px 20px 20px;
       }
 
       .event{
@@ -241,7 +240,7 @@
     <div class="main">
         <section class="wrapper-sroll" id="statistic-table">
                 {% for card in week_cards %}
-                    <div class="day-card {% if card.is_current_day %}current-day{% endif %}">
+                    <div class="day-card  {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px;">
                         <div class="card-content" >
                             <div class="card-date">
                                 <div class="date">
