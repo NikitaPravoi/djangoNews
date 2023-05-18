@@ -29,4 +29,8 @@ def get_week_cards(request):
         'week_cards': week_cards,
         'events': events,
     }
-    return render(request, 'news/base.html', context)
+    return render(request, 'news/main.html', context)
+
+
+def get_news_page(request):
+    return render(request, 'news/news.html')
