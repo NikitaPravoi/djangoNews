@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import date, timedelta
-from .models import Event
+from .models import Event, News, Project, Work
 import calendar
 
 
@@ -16,21 +16,39 @@ def get_week_cards(request):
         day_name = calendar.day_name[card_date.weekday()].capitalize()
         month_name = calendar.month_name[card_date.month]
 
+        events = Event.objects.filter(event_date__date=card_date)
+
         card = {
             'date': f"{day_name}, {card_date.day} {month_name}",
-            'content': 'Совещание, УГМК',
+            'content': events[0].title if events else '',
             'is_current_day': card_date == current_date
         }
         week_cards.append(card)
 
-    events = Event.objects.all()
+    today_events = Event.objects.filter(event_date__date=current_date)
 
     context = {
         'week_cards': week_cards,
-        'events': events,
+        'today_events': today_events,
     }
     return render(request, 'news/main.html', context)
 
 
+# def get_events_by_date(request, year, month, day):
+#     selected_date = date(year, month, day)
+#     events = Event.objects.filter(event_date__date=selected_date)
+#
+#     context = {
+#         'selected_date': selected_date,
+#         'events': events,
+#     }
+#     return render(request, 'news/events.html', context)
+
+
 def get_news_page(request):
-    return render(request, 'news/news.html')
+    news = News.objects.all()
+
+    context = {
+        'news': news
+    }
+    return render(request, 'news/news.html', context)

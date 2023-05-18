@@ -3,10 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-# class User(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset() \

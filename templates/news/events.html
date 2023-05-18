@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+{% block title %}Events for {{ selected_date }}{% endblock %}
+{% block content %}
+<h2>Events for {{ selected_date }}</h2>
+{% for event in events %}
+<div class="event">
+    <div class="event-content">
+        <div class="event-header">
+            <h3>{{ event.title }}</h3>
+            <p class="card-text"><small class="text-muted">Published: {{ event.publish }}</small></p>
+        </div>
+        <div class="event-text">
+            <span>{{ event.body }}</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
