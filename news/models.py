@@ -50,6 +50,7 @@ class Work(models.Model):
     author = models.ForeignKey(User, related_name='works_authored', on_delete=models.CASCADE)
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField()
+    project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
 
     objects = models.Manager()
 

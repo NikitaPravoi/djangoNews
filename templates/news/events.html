@@ -1,13 +1,13 @@
 {% extends 'news/base.html' %}
-{% block title %}Events for {{ selected_date }}{% endblock %}
+{% block title %}События на {{ selected_date }}{% endblock %}
 {% block content %}
-<h2>Events for {{ selected_date }}</h2>
+<h2>События на {{ selected_date }}</h2>
 {% for event in events %}
 <div class="event">
     <div class="event-content">
         <div class="event-header">
             <h3>{{ event.title }}</h3>
-            <p class="card-text"><small class="text-muted">Published: {{ event.publish }}</small></p>
+            <p class="card-text"><small class="text-muted">Опубликовано: {{ event.publish }}</small></p>
         </div>
         <div class="event-text">
             <span>{{ event.body }}</span>

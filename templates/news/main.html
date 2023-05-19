@@ -3,7 +3,6 @@
 {% block content %}
 <section class="wrapper-sroll" id="statistic-table">
     {% for card in week_cards %}
-{#    <a href="{% url 'djangoNews:events_by_date' year=card.date.year month=card.date.month|date:'m' day=card.date.day|date:'d' %}">#}
         <div class="day-card {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px;">
             <div class="card-content">
                 <div class="card-date">
@@ -19,4 +18,17 @@
     </a>
     {% endfor %}
 </section>
+{% for event in today_events %}
+<div class="event">
+    <div class="event-content">
+        <div class="event-header">
+            <h3>{{ event.title }}</h3>
+            <p class="card-text"><small class="text-muted">Опубликовано: {{ event.publish }}</small></p>
+        </div>
+        <div class="event-text">
+            <span>{{ event.body }}</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
