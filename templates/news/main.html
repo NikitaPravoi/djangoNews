@@ -1,34 +1,37 @@
 {% extends 'news/base.html' %}
 {% block title %}Главная{% endblock %}
 {% block content %}
-<section class="wrapper-sroll" id="statistic-table">
-    {% for card in week_cards %}
-        <div class="day-card {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px;">
-            <div class="card-content">
-                <div class="card-date">
-                    <div class="date">
-                        <span class="text-date">{{ card.date }}</span>
+    <section class="wrapper-sroll" id="statistic-table">
+        {% for card in week_cards %}
+            <div class="day-card {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px;">
+               <a href="/events/{{card.link_date.year}}/{{card.link_date.month}}/{{card.link_date.day}}">
+                <div class="card-content">
+                    <div class="card-date">
+                        <div class="date">
+                            <span class="text-date">{{ card.date }}</span>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        {% for title in card.contents %}
+                            <span>{{ title }}</span><br>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="card-text">
-                    <span>{{ card.content }}</span>
-                </div>
+               </a>
+            </div>
+        {% endfor %}
+    </section>
+    {% for event in today_events %}
+    <div class="event">
+        <div class="event-content">
+            <div class="event-header">
+                <h3>{{ event.title }}</h3>
+                <p class="card-text"><small class="text-muted">Опубликовано: {{ event.publish }}</small></p>
+            </div>
+            <div class="event-text">
+                <span>{{ event.body }}</span>
             </div>
         </div>
-    </a>
-    {% endfor %}
-</section>
-{% for event in today_events %}
-<div class="event">
-    <div class="event-content">
-        <div class="event-header">
-            <h3>{{ event.title }}</h3>
-            <p class="card-text"><small class="text-muted">Опубликовано: {{ event.publish }}</small></p>
-        </div>
-        <div class="event-text">
-            <span>{{ event.body }}</span>
-        </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
 {% endblock %}
