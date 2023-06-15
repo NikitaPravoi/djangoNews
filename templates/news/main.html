@@ -3,7 +3,7 @@
 {% block content %}
     <section class="wrapper-sroll" id="statistic-table">
         {% for card in week_cards %}
-            <div class="day-card {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px;">
+            <div class="day-card {% if card.is_current_day %}current-day{% endif %}" style="min-width: 300px; max-height: 180px">
                <a href="/events/{{card.link_date.year}}/{{card.link_date.month}}/{{card.link_date.day}}">
                 <div class="card-content">
                     <div class="card-date">
@@ -29,7 +29,11 @@
                 <p class="card-text"><small class="text-muted">Опубликовано: {{ event.publish }}</small></p>
             </div>
             <div class="event-text">
+                <span>Участники: {{ event.all_participants }}</span>
+                <br>
                 <span>{{ event.body }}</span>
+                <br>
+                <span>Начало: {{ event.event_date|date:"H:i" }}</span>
             </div>
         </div>
     </div>

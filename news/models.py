@@ -25,6 +25,9 @@ class Event(models.Model):
 
     objects = models.Manager()
 
+    def all_participants(self):
+        return ",".join([str(p) for p in self.participants.all()])
+
     class Meta:
         ordering = ['-publish']
         indexes = [

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import create_event
 
 app_name = 'djangoNews'
 
@@ -10,6 +11,6 @@ urlpatterns = [
          views.EventDetailView.as_view(),
          name='event_detail'),
     path('create/',
-         views.EventCreateView.as_view(),
+         create_event,
          name='event_create'),
 ]

@@ -74,6 +74,7 @@ def get_events_by_date(request, year, month, day):
         week_cards.append(card)
 
     today_events = Event.objects.filter(event_date__date=selected_date)
+
     context = {
         'week_cards': week_cards,
         'today_events': today_events,
@@ -88,3 +89,16 @@ def get_news_page(request):
         'news': news
     }
     return render(request, 'news/news.html', context)
+
+
+def render_calendar(request):
+
+    events = Event.objects.all()
+
+    works = Work.objects.all()
+
+    context = {
+        'events': events,
+        'works': works
+    }
+    return render(request, 'news/calendar.html', context)

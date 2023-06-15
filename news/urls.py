@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.get_week_cards, name='main'),
     path('news/', views.get_news_page, name='news'),
     path('events/<int:year>/<int:month>/<int:day>/', views.get_events_by_date, name='events-by-date'),
-
+    path('calendar/', views.render_calendar, name='calendar')
 ]

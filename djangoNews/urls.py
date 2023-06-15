@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls', namespace='main')),
     path('news/', include('news.urls', namespace='news')),
-    path('api/', include('news.api.urls', namespace='api'))
+    path('api/', include('news.api.urls', namespace='api')),
+    path('calendar/', include('news.urls', namespace='calendar'))
 ]
