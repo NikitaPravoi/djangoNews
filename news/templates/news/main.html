@@ -21,6 +21,14 @@
             </div>
         {% endfor %}
     </section>
+    <div class="event">
+        <div class="event-content">
+            <div class="event-header">
+                <span style="font-size: 2rem">Сегодня: {% now "j F Y" %}</span>
+                <a href="/create/event/"><button type="button" class=" btn btn-primary">Создать событие</button></a>
+            </div>
+        </div>
+    </div>
     {% for event in today_events %}
     <div class="event">
         <div class="event-content">

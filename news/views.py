@@ -1,7 +1,16 @@
 from django.shortcuts import render
 from datetime import date, timedelta
+from rest_framework import generics
+from rest_framework.response import Response
+from .api.serializers import RegisterSerializer, UserSerializer
 from .models import Event, News, Project, Work
 import calendar
+from django.http import JsonResponse
+# from django.contrib.auth import authenticate, login
+
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 
 def get_week_cards(request):
@@ -102,3 +111,41 @@ def render_calendar(request):
         'works': works
     }
     return render(request, 'news/calendar.html', context)
+
+
+def render_form(request):
+
+    # print(request.method)
+    # print(request.POST)
+    return render(request, 'news/forms/event_creation.html')
+
+
+def render_gantt(request):
+
+    # print(request.method)
+    # print(request.POST)
+    return render(request, 'news/gantt.html')
+
+
+def event_post_form(request):
+    if is_ajax(request):
+        try:
+            # field = request.POST['принимаемое поле']
+            # field2 = request.POST['принимаемое поле']
+            # field3 = request.POST['принимаемое поле']
+            # field4 = request.POST['принимаемое поле']
+            #
+            # data_modal_window = Event.objects.created(id=id)
+            # data_modal_window.save()
+            print(request.POST)
+            return JsonResponse({'update': True, 'id': id}, status=200)
+        except ValueError as ex:
+            print(ex)
+
+
+def signin_view(request):
+    return render(request, 'news/auth/signin.html')
+
+
+def signup_view(request):
+    return render(request, 'news/auth/signup.html')

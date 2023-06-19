@@ -1,0 +1,72 @@
+{% extends 'news/base.html' %}
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+{% endblock %}
+{% block style %}
+        body {
+            background: white;
+        }
+
+        .nw-header {
+            position: absolute
+        }
+{% endblock %}
+{% block content %}
+<div class="container">
+{#{% csrf_token %}#}
+    <form  name="createEventForm" id="createEventForm">
+        <div class="mb-3 form-group">
+              <h3 class="text-left">Создание события</h3>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="title_form" class="form-label">Заголовок</label>
+          <input type="text" class="form-control" id="title_form" placeholder="Название события">
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="body_form" class="form-label">Описание</label>
+          <input type="text" class="form-control" id="body_form" placeholder="Описание события">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="user_form" class="form-label">Пользователи</label>
+            <select multiple id="user_form" class="form-select">
+              <option selected>Выберите...</option>
+              <option>...</option>
+            </select>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="file_form" class="form-label">Файл (необязательное поле)</label>
+          <input class="form-control" type="file" id="file_form">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="published_form">Дата публикации</label>
+            <input id="published_form" class="form-control" type="datetime-local"/>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="event_date_form">Дата события</label>
+            <input id="event_date_form" class="form-control" type="datetime-local"/>
+        </div>
+        <div class="mb-3 col-12">
+            <button type="submit" class="btn btn-primary">Создать событие</button>
+        </div>
+    </form>
+    </div>
+    <script>
+        $("#createEventForm").on("submit", function(){
+          $.ajax({
+            url: "{% url 'djangoNews:post_form' %}",
+            method: 'post',
+            dataType: 'json',
+            data: {key1:$('#title_form').val(),
+                key2:$('#body_form').val(),
+                key3:$('#user_form').val(),
+                {#key4:$('#file-form').val(),#}
+                key5:$('#published_form').val(),
+                key6:$('#event_date_form').val(),
+                },
+            success: function(data){
+              console.log(true);
+            }
+          });
+        });
+    </script>
+{% endblock %}

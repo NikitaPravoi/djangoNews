@@ -1,0 +1,95 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<style>
+    html, body{
+    margin:0;
+    padding:0;
+}
+a {
+    text-decoration: none;
+}
+section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+    width: 450px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+div.form-group {
+    margin-bottom: 23px;
+}
+nav>div.container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+div.collapse {
+    display: block !important;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+label {
+    color: #939393;
+}
+div>a.navbar-brand {
+    color: #939393;
+}
+div>a.navbar-brand:hover {
+    color: #ffce74;
+}
+</style>
+<main>
+  <section class="section">
+    <div class="container">
+        <div class="row">
+        <div class="container container--mini">
+            <!-- <img class="img-fluid mx-auto d-block mb-5" src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-logo.svg" alt=""> -->
+            <div class="form-group">
+              <h1 class="text-center">Sign Up</h1>
+            </div>
+            <form  name="loginform" id="loginform" action="https://themes.getbootstrap.com/wp-login.php" method="post">
+            <div class="form-group">
+                <label for="user_login">First name</label>
+                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+            </div>
+            <div class="form-group">
+                <label for="user_login">Last name</label>
+                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+            </div>
+            <div class="form-group">
+                <label for="user_login">Username</label>
+                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+            </div>
+            <div class="form-group">
+                <label for="user_login">Email address</label>
+                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+            </div>
+            <div class="form-group">
+                <label for="user_pass">Password</label>
+                <input type="password" name="pwd" id="user_pass" class="form-control" value="" size="20">
+            </div>
+            <div class="form-group d-flex flex-sm-column">
+                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-dark btn-brand btn-block mb-4" value="Sign Up">
+                <input type="hidden" name="redirect_to" value="https://themes.getbootstrap.com/my-account/">
+            </div>
+            </form>
+                <p class="small text-center text-gray-soft">Already have an account? <a href="signin.html">Sign in</a></p>
+        </div>
+        </div>
+    </div>
+  </section>
+</main>
