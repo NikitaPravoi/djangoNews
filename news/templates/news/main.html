@@ -24,7 +24,7 @@
     <div class="event">
         <div class="event-content">
             <div class="event-header">
-                <span style="font-size: 2rem">Сегодня: {% now "j F Y" %}</span>
+                <span style="font-size: 2rem">Сегодня: {{ current_date }}</span>
                 <a href="/create/event/"><button type="button" class=" btn btn-primary">Создать событие</button></a>
             </div>
         </div>
@@ -41,9 +41,34 @@
                 <br>
                 <span>{{ event.body }}</span>
                 <br>
-                <span>Начало: {{ event.event_date|date:"H:i" }}</span>
+            </div>
+            <div style="font-size: 1.1rem; display: inline-block; background-color: var(--bs-gray-200); border-radius: 5px; margin: 10px 0 0">
+                    <span style="font-weight: bold; margin: 5px;">Начало:</span><br>
+                    <span style="margin: 5px;">{{ event.event_date|date:"j F H:i"|lower }}</span>
             </div>
         </div>
     </div>
     {% endfor %}
+{% endblock %}
+{% block scripts %}
+<script>
+    (function() {
+
+        function scrollHorizontally(e) {
+            e = window.event || e;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            document.getElementById('statistic-table').scrollLeft -= (delta*300); // Multiplied by 10
+            e.preventDefault();
+        }
+        if (document.getElementById('statistic-table').addEventListener) {
+            // IE9, Chrome, Safari, Opera
+            document.getElementById('statistic-table').addEventListener("mousewheel", scrollHorizontally, false);
+            // Firefox
+            document.getElementById('statistic-table').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+        } else {
+            // IE 6/7/8
+            document.getElementById('statistic-table').attachEvent("onmousewheel", scrollHorizontally);
+        }
+        })();
+  </script>
 {% endblock %}

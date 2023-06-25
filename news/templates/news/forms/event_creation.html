@@ -13,8 +13,8 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-{#{% csrf_token %}#}
-    <form  name="createEventForm" id="createEventForm">
+    <form  name="createEventForm" id="createEventForm" action="">
+        {% csrf_token %}
         <div class="mb-3 form-group">
               <h3 class="text-left">Создание события</h3>
         </div>
@@ -27,10 +27,11 @@
           <input type="text" class="form-control" id="body_form" placeholder="Описание события">
         </div>
         <div class="mb-3 col-md-4">
-            <label for="user_form" class="form-label">Пользователи</label>
-            <select multiple id="user_form" class="form-select">
-              <option selected>Выберите...</option>
-              <option>...</option>
+            <label for="user_form" class="form-label">Участники</label>
+            <select multiple id="user_form" name="users[]" class="form-select">
+              {% for user in users %}
+              <option>{{ user.username }}</option>
+              {% endfor %}
             </select>
         </div>
         <div class="mb-3 col-md-4">
@@ -51,6 +52,33 @@
     </form>
     </div>
     <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
         $("#createEventForm").on("submit", function(){
           $.ajax({
             url: "{% url 'djangoNews:post_form' %}",
@@ -59,7 +87,7 @@
             data: {key1:$('#title_form').val(),
                 key2:$('#body_form').val(),
                 key3:$('#user_form').val(),
-                {#key4:$('#file-form').val(),#}
+                {#key4:$('#file_form').val(),#}
                 key5:$('#published_form').val(),
                 key6:$('#event_date_form').val(),
                 },

@@ -26,7 +26,7 @@ class Event(models.Model):
     objects = models.Manager()
 
     def all_participants(self):
-        return ",".join([str(p) for p in self.participants.all()])
+        return ", ".join([str(p) for p in self.participants.all()])
 
     class Meta:
         ordering = ['-publish']
@@ -50,10 +50,12 @@ class Work(models.Model):
     title = models.CharField(max_length=250)
     body = models.TextField()
     participants = models.ManyToManyField(User, related_name='works_participated')
-    author = models.ForeignKey(User, related_name='works_authored', on_delete=models.CASCADE)
+    # author = models.ForeignKey(User, related_name='works_authored', on_delete=models.CASCADE)
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField()
-    project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null=True, on_delete=models.PROTECT)
+    plan = models.BooleanField(default=False)
+    fact = models.BooleanField(default=False)
 
     objects = models.Manager()
 
@@ -71,5 +73,31 @@ class News(models.Model):
     updated = models.DateTimeField(auto_now=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-publish']
+        indexes = [
+            models.Index(fields=['-publish']),
+        ]
+
     def __str__(self):
         return self.title
+
+
+class Message(models.Model):
+    theme = models.CharField(max_length=512,
+                             verbose_name='Тема сообщения')
+
+    text = models.CharField(max_length=5000,
+                            verbose_name='Текст сообщения')
+
+    date_message = models.DateTimeField(default=timezone.now, blank=True,
+                                        verbose_name='Время создания сообщения')
+
+    class Meta:
+        ordering = ['-date_message']
+        indexes = [
+            models.Index(fields=['-date_message']),
+        ]
+
+    def __str__(self):
+        return self.theme

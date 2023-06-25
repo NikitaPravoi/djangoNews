@@ -61,33 +61,34 @@ div>a.navbar-brand:hover {
             <div class="form-group">
               <h1 class="text-center">Sign Up</h1>
             </div>
-            <form  name="loginform" id="loginform" action="https://themes.getbootstrap.com/wp-login.php" method="post">
+            <form  name="loginform" id="loginform" method="post">
+                {% csrf_token %}
             <div class="form-group">
-                <label for="user_login">First name</label>
-                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+                <label for="user_first_name">First name</label>
+                <input type="text" name="first_name" id="user_first_name" class="form-control" value="" size="20">
             </div>
             <div class="form-group">
-                <label for="user_login">Last name</label>
-                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+                <label for="user_last_name">Last name</label>
+                <input type="text" name="last_name" id="user_last_name" class="form-control" value="" size="20">
             </div>
             <div class="form-group">
-                <label for="user_login">Username</label>
-                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+                <label for="user_name">Username</label>
+                <input type="text" name="username" id="user_name" class="form-control" value="" size="20">
             </div>
             <div class="form-group">
-                <label for="user_login">Email address</label>
-                <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
+                <label for="user_email">Email address</label>
+                <input type="text" name="email" id="user_email" class="form-control" value="" size="20">
             </div>
             <div class="form-group">
                 <label for="user_pass">Password</label>
-                <input type="password" name="pwd" id="user_pass" class="form-control" value="" size="20">
+                <input type="password" name="password" id="user_pass" class="form-control" value="" size="20">
             </div>
             <div class="form-group d-flex flex-sm-column">
                 <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-dark btn-brand btn-block mb-4" value="Sign Up">
-                <input type="hidden" name="redirect_to" value="https://themes.getbootstrap.com/my-account/">
+                <input type="hidden" name="redirect_to" value="/">
             </div>
             </form>
-                <p class="small text-center text-gray-soft">Already have an account? <a href="signin.html">Sign in</a></p>
+                <p class="small text-center text-gray-soft">Already have an account? <a href="/signin/">Sign in</a></p>
         </div>
         </div>
     </div>

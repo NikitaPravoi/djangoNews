@@ -12,4 +12,5 @@ urlpatterns = [
     path('gantt/', views.render_gantt, name='gantt'),
     path('signin/', views.signin_view, name='signin'),
     path('signup/', views.signup_view, name='signup'),
+    path('logout/', views.logout_view, name='logout'),
 ]

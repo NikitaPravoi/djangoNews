@@ -62,11 +62,12 @@ div>a.navbar-brand:hover {
         <div class="container container--mini">
             <!-- <img class="img-fluid mx-auto d-block mb-5" src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-logo.svg" alt=""> -->
             <div class="form-group">
-              <h1 class="text-center">Sign In</h1>
+              <h1 class="text-center">Войти</h1>
             </div>
-            <form  name="loginform" id="loginform" action="https://themes.getbootstrap.com/wp-login.php" method="post">
+            <form  name="loginform" id="loginform" method="post">
+                {% csrf_token %}
             <div class="form-group">
-                <label for="user_login">Email</label>
+                <label for="user_login">Username</label>
                 <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
             </div>
             <div class="form-group">
@@ -77,10 +78,10 @@ div>a.navbar-brand:hover {
                 <!-- <p class="login-remember"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label></p> -->
             <div class="form-group d-flex flex-sm-column">
                 <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-dark btn-brand btn-block mb-4" value="Sign In">
-                <input type="hidden" name="redirect_to" value="https://themes.getbootstrap.com/my-account/">
+                <input type="hidden" name="redirect_to" value="/">
             </div>
             </form>
-                <p class="small text-center text-gray-soft">Don't have an account yet? <a href="signup.html">Sign up</a></p>
+                <p class="small text-center text-gray-soft">Ещё не зарегистрированы? <a href="signup.html">Зарегистрироваться</a></p>
         </div>
         </div>
     </div>
